@@ -35,9 +35,15 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: Update configTest.json description
-        uses: actions/Ayushsharmagit/test-repo-I@master
-        with:
-          file: configTest.json
-          field: description
-          value: "my custom data"
+      - name: Run a multi-line script
+        run: |
+          ls
+          pwd
+          
+          
+#       - name: Update configTest.json description
+#         uses: actions/Ayushsharmagit/test-repo-I@master
+#         with:
+#           file: configTest.json
+#           field: description
+#           value: "my custom data"
