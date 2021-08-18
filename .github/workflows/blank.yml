@@ -36,7 +36,7 @@ jobs:
           echo test, and deploy your project.
           
       - name: Update configTest.json description
-        uses: Ayushsharmagit/test-repo-I@master
+        uses: action/Ayushsharmagit/test-repo-I@master
         with:
           file: configTest.json
           field: description
