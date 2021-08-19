@@ -37,7 +37,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           tree /home/
-          nano /home/runner/work/test-repo-I/test-repo-I/configTest.json
+          nano /home/runner/work/test-repo-II/test-repo-II/configTest.json
 #          ls /home/runner/work/
 #          shell: bash
           
