@@ -33,15 +33,25 @@ jobs:
         with:
           repository: Ayushsharmagit/test-repo-I
           ref: master
-          path: /home/runner/work/test-repo-I
+#          path: /home/runner/work/test-repo-I
           
       - name: Run a multi-line script
         run: |
           tree /home/
-          ls
-#          cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
+          cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
 #          ls /home/runner/work/
 #          shell: bash
+
+      - name: Update configTest.json description
+        uses: jossef/action-set-json-field@v1
+        with:
+          file: /home/runner/work/test-repo-II/test-repo-II/configTest.json
+          field: description
+          value: my custom data
+          
+      - name: Cat configTest.json
+        run: cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
+          
           
 #       - name: Update configTest.json description
 #         uses: actions/Ayushsharmagit/test-repo-I@master
