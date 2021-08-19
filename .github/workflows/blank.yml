@@ -30,6 +30,16 @@ jobs:
           sudo apt install tree
           tree /home/
           
+      - name: Checkout tools repo Ayushsharmagit/test-repo-I
+        uses: actions/checkout@v2
+        with:
+          repository: Ayushsharmagit/test-repo-I
+#           path: master
+          
+      - name: Run a multi-line script
+        run: |
+          sudo apt install tree
+          tree /home/
           
 #       - name: Update configTest.json description
 #         uses: actions/Ayushsharmagit/test-repo-I@master
