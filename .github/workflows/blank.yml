@@ -33,11 +33,13 @@ jobs:
         with:
           repository: Ayushsharmagit/test-repo-I
           ref: master
+          path: /home/runner/work/test-repo-I
           
       - name: Run a multi-line script
         run: |
           tree /home/
-          cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
+          ls
+#          cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
 #          ls /home/runner/work/
 #          shell: bash
           
