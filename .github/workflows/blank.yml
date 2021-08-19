@@ -31,6 +31,7 @@ jobs:
       - name: Checkout tools repo Ayushsharmagit/test-repo-I
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.TOKEN }}
           repository: Ayushsharmagit/test-repo-I
           ref: master
 #          path: /home/runner/work/test-repo-I
@@ -58,7 +59,8 @@ jobs:
           git config --local user.email "example@users.noreply.github.com"
           git config --local user.name "Ayush"
           git commit -m "Add changes" -a
-          git push ${{ secrets.TOKEN }} https://github.com/Ayushsharmagit/test-repo-I.git master
+          git push https://github.com/Ayushsharmagit/test-repo-I.git master
+#          git push ${{ secrets.TOKEN }} https://github.com/Ayushsharmagit/test-repo-I.git master
           
 #       - name: Push changes
 #         uses: ad-m/github-push-action@master
