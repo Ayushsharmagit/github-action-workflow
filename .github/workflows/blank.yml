@@ -56,6 +56,7 @@ jobs:
           
       - name: Commit files
         run: |
+          echo ${{ env.REPO_NAME }}
           git config --local user.email "example@users.noreply.github.com"
           git config --local user.name "Ayush"
           git commit -m "Add changes" -a
