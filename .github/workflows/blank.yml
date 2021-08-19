@@ -28,11 +28,11 @@ jobs:
 #           sudo apt install tree
 #           tree /home/
           
-      - name: Checkout tools repo Ayushsharmagit/test-repo-I
+      - name: Checkout tools repo ${{ env.REPO_NAME }}
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.TOKEN }}
-          repository: Ayushsharmagit/test-repo-I
+          repository: ${{ env.REPO_NAME }}
           ref: master
 #          path: /home/runner/work/test-repo-I
           
@@ -49,7 +49,7 @@ jobs:
         with:
           file: /home/runner/work/test-repo-II/test-repo-II/configTest.json
           field: github.description
-          value: my custom data
+          value: Test Data
           
       - name: Cat configTest.json after changes
         run: cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
@@ -59,18 +59,18 @@ jobs:
           git config --local user.email "example@users.noreply.github.com"
           git config --local user.name "Ayush"
           git commit -m "Add changes" -a
-          git push https://github.com/Ayushsharmagit/test-repo-I.git master
-#          git push ${{ secrets.TOKEN }} https://github.com/Ayushsharmagit/test-repo-I.git master
+          git push https://github.com/${{ env.REPO_NAME }}.git master
+#          git push ${{ secrets.TOKEN }} https://github.com/${{ env.REPO_NAME }}.git master
           
 #       - name: Push changes
 #         uses: ad-m/github-push-action@master
 #         with:
 #           github_token: ${{ secrets.TOKEN }}
-#           repository: Ayushsharmagit/test-repo-I
+#           repository: ${{ env.REPO_NAME }}
 #           branch: master
           
 #       - name: Update configTest.json description
-#         uses: actions/Ayushsharmagit/test-repo-I@master
+#         uses: actions/${{ env.REPO_NAME }}@master
 #         with:
 #           file: configTest.json
 #           field: description
