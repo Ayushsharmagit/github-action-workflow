@@ -11,8 +11,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
+# REPO_NAME could be any repository name
+#I use secret to define my repo name
 env:
-  REPO_NAME: Ayushsharmagit/test-repo-I
+  REPO_NAME: ${{ secrets.REPO_NAME }}
+  File_To_Change: configTest.json
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -41,25 +44,25 @@ jobs:
           
       - name: Run a multi-line script
         run: |
+          ${{ github.event.repository.name }}
           tree /home/
-          cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
+          cat /home/runner/work/github-action-workflow/github-action-workflow/${{ env.File_To_Change }}
 #          cat /home/runner/work/_actions/actions/checkout/v2/action.yml
 #          ls /home/runner/work/
 #          shell: bash
 
-      - name: Update configTest.json description
+      - name: Update ${{ env.File_To_Change }} description
         uses: jossef/action-set-json-field@v1
         with:
-          file: /home/runner/work/test-repo-II/test-repo-II/configTest.json
+          file: /home/runner/work/github-action-workflow/github-action-workflow/${{ env.File_To_Change }}
           field: github.description
-          value: Test Data
+          value: Test
           
       - name: Cat configTest.json after changes
-        run: cat /home/runner/work/test-repo-II/test-repo-II/configTest.json
+        run: cat /home/runner/work/github-action-workflow/github-action-workflow/${{ env.File_To_Change }}
           
       - name: Commit files
         run: |
-          echo ${{ env.REPO_NAME }}
           git config --local user.email "example@users.noreply.github.com"
           git config --local user.name "Ayush"
           git commit -m "Add changes" -a
@@ -73,7 +76,7 @@ jobs:
 #           repository: ${{ env.REPO_NAME }}
 #           branch: master
           
-#       - name: Update configTest.json description
+#       - name: Update ${{ env.File_To_Change }} description
 #         uses: actions/${{ env.REPO_NAME }}@master
 #         with:
 #           file: configTest.json
