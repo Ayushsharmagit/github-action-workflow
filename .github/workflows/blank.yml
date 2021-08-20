@@ -29,11 +29,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 #       - uses: actions/checkout@v2
           
-#       - name: Run a multi-line script
-#         run: |
-#           sudo apt install tree
-#           tree /home/
-          
       - name: Checkout tools repo ${{ env.REPO_NAME }}
         uses: actions/checkout@v2
         with:
@@ -53,15 +48,15 @@ jobs:
         with:
           file: /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/${{ env.File_To_Change }}
           field: github.description
-          value: Test
+          value: New Secrets
           
       - name: Cat ${{ env.File_To_Change }} after changes
         run: cat /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/${{ env.File_To_Change }}
           
       - name: Commit files
         run: |
-          git config --local user.email "example@users.noreply.github.com"
-          git config --local user.name "Ayush"
+          git config --local user.email "${{ secrets.USER_EMAIL }}"
+          git config --local user.name "${{ secrets.USER_NAME }}"
           git commit -m "Add changes" -a
           git push https://github.com/${{ env.REPO_NAME }}.git master
           
@@ -71,10 +66,3 @@ jobs:
 #           github_token: ${{ secrets.TOKEN }}
 #           repository: ${{ env.REPO_NAME }}
 #           branch: master
-          
-#       - name: Update ${{ env.File_To_Change }} description
-#         uses: actions/${{ env.REPO_NAME }}@master
-#         with:
-#           file: ${{ env.File_To_Change }}
-#           field: description
-#           value: "my custom data"
