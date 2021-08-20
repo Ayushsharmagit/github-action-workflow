@@ -1,5 +1,6 @@
 # github-action-workflow
-This repository have the github action workflow code. The workflow will be responsible to upload the code on device.
+This repository have the github action workflow code. The workflow will edit the respected .json file and upload to respected repository code on device.
+
 
 Requisite
 
@@ -7,8 +8,7 @@ i) Create a workflow in action
 
 ii) .yml file in workflow
 
-iii) secret.github_token
+iii) secret.github_token:- Token , Repo Name 
 
-iv) Personal access tokens
+iv) Personal access tokens:- For accessing the Repo where you want to change the JSON.
 
-Initial commit - workflow code will udpate the config file.
