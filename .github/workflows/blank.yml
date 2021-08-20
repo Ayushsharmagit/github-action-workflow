@@ -44,22 +44,19 @@ jobs:
           
       - name: Run a multi-line script
         run: |
-          echo ${{ github.event.repository.name }}
           tree /home/
-          cat /home/runner/work/github-action-workflow/github-action-workflow/${{ env.File_To_Change }}
-#          cat /home/runner/work/_actions/actions/checkout/v2/action.yml
-#          ls /home/runner/work/
+          cat /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/${{ env.File_To_Change }}
 #          shell: bash
 
       - name: Update ${{ env.File_To_Change }} description
         uses: jossef/action-set-json-field@v1
         with:
-          file: /home/runner/work/github-action-workflow/github-action-workflow/${{ env.File_To_Change }}
+          file: /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/${{ env.File_To_Change }}
           field: github.description
           value: Test
           
-      - name: Cat configTest.json after changes
-        run: cat /home/runner/work/github-action-workflow/github-action-workflow/${{ env.File_To_Change }}
+      - name: Cat ${{ env.File_To_Change }} after changes
+        run: cat /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/${{ env.File_To_Change }}
           
       - name: Commit files
         run: |
@@ -67,7 +64,6 @@ jobs:
           git config --local user.name "Ayush"
           git commit -m "Add changes" -a
           git push https://github.com/${{ env.REPO_NAME }}.git master
-#          git push ${{ secrets.TOKEN }} https://github.com/${{ env.REPO_NAME }}.git master
           
 #       - name: Push changes
 #         uses: ad-m/github-push-action@master
@@ -79,6 +75,6 @@ jobs:
 #       - name: Update ${{ env.File_To_Change }} description
 #         uses: actions/${{ env.REPO_NAME }}@master
 #         with:
-#           file: configTest.json
+#           file: ${{ env.File_To_Change }}
 #           field: description
 #           value: "my custom data"
