@@ -44,7 +44,7 @@ jobs:
           
       - name: Run a multi-line script
         run: |
-          ${{ github.event.repository.name }}
+          echo ${{ github.event.repository.name }}
           tree /home/
           cat /home/runner/work/github-action-workflow/github-action-workflow/${{ env.File_To_Change }}
 #          cat /home/runner/work/_actions/actions/checkout/v2/action.yml
